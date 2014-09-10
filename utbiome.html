@@ -4,141 +4,135 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>UTBIOME</title>
         <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/claro/claro.css">    
-		<link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/Nihilo/Nihilo.css">
-		<link rel="stylesheet" href="layout_re.css">
-		<link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">		
-    <style> 
-      html, body { height: 100%; width: 100%; margin: 0; padding: 0; }	  
-	</style>
-    <script type="text/javascript">
+        <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/Nihilo/Nihilo.css">
+        <link rel="stylesheet" href="css/layout_re.css">
+        <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">		
+        <style> 
+            html, body { height: 100%; width: 100%; margin: 0; padding: 0; }	  
+        </style>
+        <script type="text/javascript">
             var djConfig = {
                 parseOnLoad: true
-            }
-    </script>
-    <script src="http://js.arcgis.com/3.8/"></script>
-    <script src="utbiome_code_re.js" type="text/javascript"></script> 
-	</head>
+            };
+        </script>
+        <script src="http://js.arcgis.com/3.8/"></script>
+        <script src="js/utbiome_code_re.js" type="text/javascript"></script> 
+    </head>
 
     <body class="claro">
         <div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline'"
-			style="width:100%; height:100%;">
-			<!--The header region-->
-			<div id="header" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">
-				<div id="title">
-					<a class="customurl" href="utbiome.html">UTBIOME</a>					
-				</div>
-				<div id="metadatadiv">
-					<a class="footerdata" href="utbiomeproject.html" target="_blank">PROJECT</a>
-					<span>:</span>
-					<a class="footerdata" href="utbiometeam.html" target="_blank">TEAM</a>
-					<span>:</span>
-					<a class="footerdata" href="https://wikis.utexas.edu/pages/viewrecentblogposts.action?key=UTBIOME" 
-						target="_blank">BLOG</a>
-					<span>:</span>
-					<a class="footerdata" href="http://www.utexas.edu/cio/itgovernance/lift" target="_blank">LIFT</a>					
-				</div>
-				<div id="headerfacebookdiv">
-					<a href="https://www.facebook.com/UTBiome?ref=hl" target="_blank">
-					<img src="images/facebook_icon.png" border="0" height="28" width="28"></a>
-					<a href="https://twitter.com/UTBiome" target="_blank">
-					<img src="images/twitter.png" border="0" height="28" width="28"></a>					
-				</div>
-			</div>
-			<!--The left pane showing the tree structure of the data-->
-			<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" id="leftPane">
-				<div id="ExploredashboardWidgets" dojoType="dijit/layout/ContentPane" region="top">
-				Explore				
-				</div>
-				<div data-dojo-type="dijit/layout/ContentPane" id = "description" onClick="treeOnClick" region="center">
-						<ul>
-						<li>Click on Features in the Map to explore them.</li>
-						<li>Some Features will have timeseries of data while others are a single point in time.</li>
-						<li>Explore the ph, conductivity tabs to get a sense of the spatial variability of 
-							these variables in UT –BIOME</li>
-						<li>Click on the 3D map to explore UT in 3D</li>
-						</ul>
-				</div>
-				<div id="contactholder" dojoType="dijit/layout/ContentPane" region="bottom"
-						style="height: 130px; padding: 0;">
-					<div id="ContactdashboardWidgets" dojoType="dijit/layout/ContentPane"> Contact</div>
-					<center>
-							<span class="copyrighttag">
-									 <a class="contactdata" href="https://www.caee.utexas.edu/faculty/directory/kinney" 
-									 target="_blank">Kerry Kinney</a>
-									 <a class="contactdata" href="https://www.caee.utexas.edu/faculty/directory/passalacqua" 
-									 target="_blank">Paola Passalacqua</a><br>
-									 <a class="contactdata" href="http://scienceinpublic.weebly.com/" 
-									 target="_blank">Juan Pedro Maestre </a>&nbsp;
-									 <a class="contactdata" href="https://sites.google.com/site/sangireddyharish/" 
-									 target="_blank">Harish Sangireddy</a><br>
-									 <span>This project is funded by the Longhorn Innovation Fund for Technology(LIFT)[2013-2014]</span><br>
-									 <a class="copyrighturl" href="http://utexas.edu/" 
-									 target="_blank">&copy EWRE:UTAUSTIN 2014-2015</a>								 
-							</span>
-					</center>
-				</div>
-			</div>
-			<!--The right pane is now merged with the center pane showing the description, and visuals and downloads-->			
-			<!--The centre pane showing the map and the images-->
-			<div id="centerTabpanel" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center'"
-			     style: "height: 100%; width: 100%;">				 
-						<div id="map" dojoType="dijit/layout/ContentPane" region="center" style="overflow:hidden">
-								<!--The HomeButton toggle-->
-								<div id="HomeButton"></div>
-								<!--The Basemap toggle-->	
-								<div id="BasemapToggle"></div>
-								<!--The 3D Basemap toggle-->
-								<div id ="BasemapToggle3D">
-									<a class="basemap3d" 
-									href="http://www.arcgis.com/apps/CEWebViewer/viewer.html?3dWebScene=2dc27c15ba674e5290ebbaa36683fdf8"
-									target="_blank">
-									<img src="images/3DUTAUSTIN.PNG" border="1" height="auto" width="62"> </a>									
-								</div>
-								<!--The div for Charts to Appear-->
-								<div id="dashboard" data-dojo-type="dijit/TitlePane" 
-										data-dojo-props="title:'Dashboard', closable:true, open:false">
-									<div id="TimeseriesChart"></div>
-									<div id ="chartdatadownload">click on green dots on map to visualize timeseries here</div>
-								</div>
+             style="width:100%; height:100%;">
+            <!--The header region-->
+            <div id="header" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">
+                <div id="title">
+                    <a class="customurl" href="utbiome.html">UTBIOME</a>					
+                </div>
+                <div id="metadatadiv">
+                    <a class="footerdata" href="index.html" target="_blank">PROJECT</a>
+                    <span>:</span>
+                    <a class="footerdata" href="utbiometeam.html" target="_blank">TEAM</a>
+                    <span>:</span>
+                    <a class="footerdata" href="https://wikis.utexas.edu/pages/viewrecentblogposts.action?key=UTBIOME" 
+                       target="_blank">BLOG</a>
+                    <span>:</span>
+                    <a class="footerdata" href="http://www.utexas.edu/cio/itgovernance/lift" target="_blank">LIFT</a>					
+                </div>
+                <div id="headerfacebookdiv">
+                    <a href="https://www.facebook.com/UTBiome?ref=hl" target="_blank">
+                        <img src="images/facebook_icon.png" border="0" height="28" width="28"></a>
+                    <a href="https://twitter.com/UTBiome" target="_blank">
+                        <img src="images/twitter.png" border="0" height="28" width="28"></a>					
+                </div>
+            </div>
+            <!--The left pane showing the tree structure of the data-->
+            <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" id="leftPane">
+                <div id="ExploredashboardWidgets" data-dojo-type="dijit/layout/ContentPane" > Explore	</div>
+                <div data-dojo-type="dijit/layout/ContentPane" id = "description" onClick="treeOnClick">
+                    <ul>
+                        <li>Click on Features in the Map to explore them.</li>
+                        <li>Some Features will have timeseries of data while others are a single point in time.</li>
+                        <li>Explore the ph, conductivity tabs to get a sense of the spatial variability of 
+                            these variables in UT –BIOME</li>
+                        <li>Click on the 3D map to explore UT in 3D</li>
+                    </ul>
+                </div>
+                <div id="contactholder" data-dojo-type="dijit/layout/ContentPane" style="height: 130px; padding: 0;">
+                    <div id="ContactdashboardWidgets" data-dojo-type="dijit/layout/ContentPane"> Contact</div>
+                    <center>
+                        <span class="copyrighttag">
+                            <a class="contactdata" href="https://www.caee.utexas.edu/faculty/directory/kinney" 
+                               target="_blank">Kerry Kinney</a>
+                            <a class="contactdata" href="https://www.caee.utexas.edu/faculty/directory/passalacqua" 
+                               target="_blank">Paola Passalacqua</a><br>
+                            <a class="contactdata" href="http://scienceinpublic.weebly.com/" 
+                               target="_blank">Juan Pedro Maestre </a>&nbsp;
+                            <a class="contactdata" href="https://sites.google.com/site/sangireddyharish/" 
+                               target="_blank">Harish Sangireddy</a><br>
+                            <span>This project is funded by the Longhorn Innovation Fund for Technology(LIFT)[2013-2014]</span><br>
+                            <a class="copyrighturl" href="http://utexas.edu/" 
+                               target="_blank">&copy EWRE:UTAUSTIN 2014-2015</a>								 
+                        </span>
+                    </center>
+                </div>
+            </div>
+            <!--The right pane is now merged with the center pane showing the description, and visuals and downloads-->			
+            <!--The center pane showing the map and the images-->
+            <div id="centerTabpanel" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center'">				 
+                <div id="map" data-dojo-type="dijit/layout/ContentPane">
+                    <!--The HomeButton toggle-->
+                    <div id="HomeButton"></div>
+                    <!--The Basemap toggle-->	
+                    <div id="BasemapToggle"></div>
+                    <!--The 3D Basemap toggle-->
+                    <div id ="BasemapToggle3D">
+                        <a class="basemap3d" 
+                           href="http://www.arcgis.com/apps/CEWebViewer/viewer.html?3dWebScene=2dc27c15ba674e5290ebbaa36683fdf8"
+                           target="_blank">
+                            <img src="images/3DUTAUSTIN.PNG" border=2 width="62"> </a>									
+                    </div>
+                    <!--The div for Charts to Appear-->
+                    <div id="dashboard" data-dojo-type="dijit/TitlePane" 
+                         data-dojo-props="title:'Dashboard', closable:true, open:false">
+                        <div id="TimeseriesChart"></div>
+                        <div id ="chartdatadownload">click on green dots on map to visualize timeseries here</div>
+                    </div>
 
-								<!--The Menu bar for other maps to load in the same container-->
-								<div id="menubar">
-									<button id="HomeButtonNode" type="button"></button>
-									<button id="BiomeSphereButtonNode" type="button"></button>									
-								</div>
-								<span id="info" style="position:absolute; left:15px; bottom:5px; color:#000; z-index:50;"></span>
-								
-						</div>
-						<!--The Image gallery will be here-->
-						<div id="imageGallery" dojoType="dijit/layout/ContentPane" region="bottom" splitter="true" 
-						style="height: 120px; width: 100%; overflow-y: hidden; overflow-x: scroll; padding: 0; 
-						 white-space&#58; nowrap;">
-						 <a data-dojo-type="dojox/image/LightboxNano" href="images/photo4.JPG">
-							<img id="theImg1" class="gallery"  src="images/photo4_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/photo2.jpeg">
-							<img id="theImg2" class="gallery"  src="images/photo2_thumbnail.jpg" height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/photo3.JPG">
-							<img id="theImg3" class="gallery"  src="images/photo3_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/photo1.JPG">
-							<img id="theImg4" class="gallery"  src="images/photo1_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo1.JPG">
-							<img id="theImg5" class="gallery"  src="images/st2_photo1_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo2.JPG">
-							<img id="theImg6" class="gallery"  src="images/st2_photo2_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo3.JPG">
-							<img id="theImg7" class="gallery"  src="images/st2_photo3_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo4.JPG">
-							<img id="theImg8" class="gallery"  src="images/st2_photo4_thumbnail.jpg"  height="100" width="100" /></a>
-                        <a data-dojo-type="dojox/image/LightboxNano" href="images/cpe1_picstitch.jpg">							
-							<img id="theImg9" class="gallery"  src="images/cpe1_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/cpe2_picstitch.jpg">
-							<img id="theImg10" class="gallery"  src="images/cpe2_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/cpe3_picstitch.jpg">
-							<img id="theImg11" class="gallery"  src="images/cpe3_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
-						<a data-dojo-type="dojox/image/LightboxNano" href="images/cpe4_picstitch.jpg">
-							<img id="theImg12" class="gallery"  src="images/cpe4_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
-						</div>
-			</div>
-		</div>
+                    <!--The Menu bar for other maps to load in the same container-->
+                    <div id="menubar">
+                        <button id="HomeButtonNode" type="button"></button>
+                        <button id="BiomeSphereButtonNode" type="button"></button>									
+                    </div>
+
+                </div>
+                <!--The Image gallery will be here-->
+                <div id="imageGallery" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'"  
+                     style="height: 120px; width: 100%; overflow-y: hidden; overflow-x: scroll; padding: 0; white-space: nowrap">
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/photo4.JPG">
+                        <img id="theImg1" class="gallery"  src="images/photo4_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/photo2.jpeg">
+                        <img id="theImg2" class="gallery"  src="images/photo2_thumbnail.jpg" height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/photo3.JPG">
+                        <img id="theImg3" class="gallery"  src="images/photo3_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/photo1.JPG">
+                        <img id="theImg4" class="gallery"  src="images/photo1_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo1.JPG">
+                        <img id="theImg5" class="gallery"  src="images/st2_photo1_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo2.JPG">
+                        <img id="theImg6" class="gallery"  src="images/st2_photo2_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo3.JPG">
+                        <img id="theImg7" class="gallery"  src="images/st2_photo3_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/st2_photo4.JPG">
+                        <img id="theImg8" class="gallery"  src="images/st2_photo4_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/cpe1_picstitch.jpg">							
+                        <img id="theImg9" class="gallery"  src="images/cpe1_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/cpe2_picstitch.jpg">
+                        <img id="theImg10" class="gallery"  src="images/cpe2_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/cpe3_picstitch.jpg">
+                        <img id="theImg11" class="gallery"  src="images/cpe3_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
+                    <a data-dojo-type="dojox/image/LightboxNano" href="images/cpe4_picstitch.jpg">
+                        <img id="theImg12" class="gallery"  src="images/cpe4_picstitch_thumbnail.jpg"  height="100" width="100" /></a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

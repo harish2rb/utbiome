@@ -1,9 +1,14 @@
 <!doctype html>  
 <head>
     <meta charset="UTF-8">
-    <title>UT BIOME - Team</title>
+    <title>UT BIOME - Data</title>
     <link rel="shortcut icon" href="images/favicon.gif" type="image/x-icon"/> 
-    <link rel="stylesheet" type="text/css" href="css/basecss.css"/>
+    <link rel="stylesheet" type="text/css" href="css/basecssData.css"/> 
+    <SCRIPT LANGUAGE="JavaScript">
+        function writeText(form) {
+            form.inputbox.value = "Have a nice day!"
+        }
+    </SCRIPT>
 </head>
 
 <body>
@@ -23,8 +28,8 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="utbiometeam.html" class="current" >People</a></li>
-                    <li><a href="utbiomedata.html" >Data</a></li>
+                    <li><a href="utbiometeam.html">People</a></li>
+                    <li><a href="utbiomedata.html" class="current"  >Data</a></li>
                     <li><a href="utbiomemaps.html" target="_blank">Maps</a></li>
                     <li><a href="https://wikis.utexas.edu/pages/viewrecentblogposts.action?key=UTBIOME" target="_blank">Blog</a></li>
                 </ul>
@@ -38,14 +43,14 @@
 
         <div id="intro">   
             <div class="group_bannner_right">
-                <img src="images/pix/Newfolder1.jpg" width="500" height="400"  alt="baner">
+                <img src="images/pix/dnadatadownload.png" width="500" height="300"  alt="baner">
             </div>
             <header class="group_bannner_left">
-                <h2>We’re a team of 15 and more people based at 
-                    The University of Texas at Austin. 
-                    Most of us work with collecting data and interacting with community
-                    and two of us work on the mapping platform (designing and coding). 
-                    We love what we do, and we love our environment. </h2>
+                <h2>All the sampling data is available for download on the maps
+                    page. The sequencing data is available for download here upon
+                    request. <br>
+                    Please fill in your name and email address below to 
+                    receive download links to the sequencing data in your email.</h2>
             </header>
         </div>
         <!--end intro-->
@@ -54,16 +59,16 @@
 
         <div class="holder_content">
             <section class="group1">
-                <h3>Hello from:<br>
-                    
-                    Kerry Kinney, Paola Passalacqua, Juan Pedro,
-                    Harish Sangireddy, Fernando Almada Calvo,
-                    Stephen Curtis Feronti, Felipe Gutierrez,
-                    Shahana Khurshid, Chloe A. Woolridge, Alexandra Caya,
-                    Eric Hersh, Michal C Ziv-El, Richard Corsi, Lynn Katz,
-                    Jay Banner
-                </h3>
-                
+
+                <form action="" method="post">
+                    <h3><b>Name:</b>
+                        <input type="text" name="name" value="" size="25" maxlength="50" /></h3>
+                    <br>
+                    <h3><b>Email:</b>
+                        <input type="text" name="email" value="" size="25" maxlength="50" /></h3>
+                    <br>
+                    <input disabled type="submit" name="submit" value="send me sequencing data! (coming soon)"/>
+                </form>
 
             </section>
 
