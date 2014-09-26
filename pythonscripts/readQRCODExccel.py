@@ -8,7 +8,7 @@ from pylab import *
 
 
 # Login with your Google account
-gc = gspread.login('biomeut', 'weareutbiometeam')
+gc = gspread.login('utBiome', 'weareutbiometeam')
 # This is where the code will write the QRCODES initially
 defaultLocation = "C:\MyStuff\UTLiftProject\FORMSQRCODE19NOV\TUESDAY19NOV"
 
