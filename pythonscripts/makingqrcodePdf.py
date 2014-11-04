@@ -1,3 +1,4 @@
+# This makes the qrcode pdf from the QRCODEs images
 import time
 import os
 from reportlab.lib.enums import TA_JUSTIFY
