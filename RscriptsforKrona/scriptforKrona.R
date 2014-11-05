@@ -17,20 +17,25 @@ qiimecolnames <- colnames(qiimedata)
 qiimecolnames
 
 # splitting the Taxon column into K - P - C - O - F - G - S 
-
 # Downstream.5pm
-Downstream.5pm <- data.frame(value=NA,Kingdom=NA,Phylum=NA,Class=NA,Order=NA,
+# variable to get
+varValue <- qiimedata$Downstream.5pm
+
+krondataframe <- data.frame(value=NA,Kingdom=NA,Phylum=NA,Class=NA,Order=NA,
                              Family=NA,Genus=NA,Species=NA)
 for (i in 1:nrow(qiimedata)){
   splittedTaxon <- unlist(strsplit(qiimedata$Taxon[i],"[;]"))
   #print(splittedTaxon)
-  Downstream.5pm <- rbind(Downstream.5pm,c(qiimedata$Downstream.5pm[i],
+  krondataframe <- rbind(krondataframe,c(varValue[i],
                                            splittedTaxon[1],splittedTaxon[2],
                                            splittedTaxon[3],splittedTaxon[4],
                                            splittedTaxon[5],splittedTaxon[6],
                                            splittedTaxon[7]))
   
 }
+
+# write the data.frame to a text file
+
 
 
 
