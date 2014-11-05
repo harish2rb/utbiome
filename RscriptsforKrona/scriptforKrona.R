@@ -19,6 +19,7 @@ qiimecolnames
 # splitting the Taxon column into K - P - C - O - F - G
 # Assuming no species is identified in the QIIME input data
 # variable to get You can change the below to get whatever column you want to get
+filenametoWrite <- "Downstream_5pm.txt"
 varValue <- qiimedata$Downstream.5pm
 
 krondataframe <- data.frame(value=NA,Kingdom=NA,Phylum=NA,Class=NA,Order=NA,
@@ -41,17 +42,33 @@ write.table(krondataframe, file = "C:\\software\\utbiomeRcode\\krondataframe.txt
 zerovaluerows <- krondataframe$value !=0
 krondataframeSanszero <- krondataframe[zerovaluerows,]
 
-# Also if any of the K,P,C,O,F,G is empty that is only e.g., k_ then put space there
-selectedRowsKingdom <- krondataframeSanszero[grep("?k__[a-zA-Z0-9]", krondataframeSanszero$Kingdom), ]
-selectedRowsphylum <- selectedRowsKingdom[grep("?p__[a-zA-Z0-9]+", selectedRowsKingdom$Phylum), ]
-selectedRowsclass <- selectedRowsphylum[grep("?c__[a-zA-Z0-9]+", selectedRowsphylum$Class), ]
-selectedRowsorder <- selectedRowsclass[grep("?o__[a-zA-Z0-9]+", selectedRowsclass$Order), ]
-selectedRowsfamily <- selectedRowsorder[grep("?f__[a-zA-Z0-9]+", selectedRowsorder$Family), ]
-selectedRowsgenus <- selectedRowsfamily[grep("?g__[a-zA-Z0-9]+", selectedRowsfamily$Genus), ]
+# Also if any of the K,P,C,O,F,G is empty that is only e.g., k_ or other then put space there
+krondataframeSanszero$Phylum[agrep("Other",
+                            krondataframeSanszero$Phylum)] <- " "
+krondataframeSanszero$Class[agrep("Other",
+                                   krondataframeSanszero$Class)] <- " "
+krondataframeSanszero$Order[agrep("Other",
+                                   krondataframeSanszero$Order)] <- " "
+krondataframeSanszero$Family[agrep("Other",
+                                   krondataframeSanszero$Family)] <- " "
+krondataframeSanszero$Genus[agrep("Other",
+                                   krondataframeSanszero$Genus)] <- " "
+
+krondataframeSanszero$Phylum[agrep("^\\+p__$",
+                                   krondataframeSanszero$Phylum,fixed=FALSE)] <- " "
+krondataframeSanszero$Class[agrep("^\\+c__$",
+                                  krondataframeSanszero$Class,fixed=FALSE)] <- " "
+krondataframeSanszero$Order[agrep("^\\+o__$",
+                                  krondataframeSanszero$Order,fixed=FALSE)] <- " "
+krondataframeSanszero$Family[agrep("^\\+f__$",
+                                   krondataframeSanszero$Family,fixed=FALSE)] <- " "
+krondataframeSanszero$Genus[agrep("^\\+g__$",
+                                  krondataframeSanszero$Genus,fixed=FALSE)] <- " "
+
 
 
 #write the data.frame to a text file (only non zero rows)
-write.table(krondataframeSanszero, file = "C:\\software\\utbiomeRcode\\krondataframeSanszero.txt",
+write.table(krondataframeSanszero, file = paste0("C:\\software\\utbiomeRcode\\",filenametoWrite),
             sep="\t",quote=FALSE, row.names = FALSE,col.names=FALSE)
 
 
