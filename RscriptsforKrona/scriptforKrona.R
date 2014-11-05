@@ -21,9 +21,14 @@ qiimecolnames
 # Downstream.5pm
 Downstream.5pm <- data.frame(value=NA,Kingdom=NA,Phylum=NA,Class=NA,Order=NA,
                              Family=NA,Genus=NA,Species=NA)
-for (i in nrow(qiimedata)){
+for (i in 1:nrow(qiimedata)){
   splittedTaxon <- unlist(strsplit(qiimedata$Taxon[i],"[;]"))
-  
+  #print(splittedTaxon)
+  Downstream.5pm <- rbind(Downstream.5pm,c(qiimedata$Downstream.5pm[i],
+                                           splittedTaxon[1],splittedTaxon[2],
+                                           splittedTaxon[3],splittedTaxon[4],
+                                           splittedTaxon[5],splittedTaxon[6],
+                                           splittedTaxon[7]))
   
 }
 
