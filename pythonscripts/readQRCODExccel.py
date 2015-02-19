@@ -105,7 +105,7 @@ for f in os.listdir(qrcodeimagepath):
     imageqr=mpimg.imread(qr_file)
     fig,ax = plt.subplots()
     fig.set_size_inches(2.0,2.0) # comment this when making eps files for printing    
-    #plt.imshow(imageqr,cmap=plt.cm.gray)
+    plt.imshow(imageqr,cmap=plt.cm.gray)
     ftemp = f.split('.')
     text(40.0, 480.0, ftemp[0],size = 10)
     #text(100.0, 460.0, ftemp[0],size = 30)
